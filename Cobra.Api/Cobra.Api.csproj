@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="AppData\" />
-    <Folder Include="ViewModels\Payments\" />
   </ItemGroup>
 
 </Project>
