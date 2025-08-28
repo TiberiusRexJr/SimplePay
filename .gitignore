@@ -416,3 +416,19 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# --- SQLite app DB (persisted at runtime) ---
+AppData/
+*.db
+*.db-shm
+*.db-wal
+
+# --- Local-only appsettings overrides (keep public appsettings.*.json committed) ---
+**/appsettings.Local.json
+**/appsettings.*.local.json
+
+# --- OS noise (for cross-platform devs/reviewers) ---
+.DS_Store
+Thumbs.db
+
+
