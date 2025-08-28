@@ -1,0 +1,49 @@
+﻿@model IEnumerable<InvoiceToPayVm>
+@{
+    ViewData["Title"] = "Make Payment";
+}
+
+<div class="row">
+    <div class="col-12 col-xl-10">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h1 class="h5 mb-3">Open Invoices</h1>
+
+                @if (!Model.Any())
+                {
+                    <div class="alert alert-success mb-0">All caught up—no open invoices.</div>
+                }
+                else
+                {
+                    <table class="table table-sm table-striped align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th class="text-end">Total</th>
+                                <th class="text-end">Paid</th>
+                                <th class="text-end">Balance</th>
+                                <th>Due</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var i in Model)
+                            {
+                                <tr>
+                                    <td>@i.Customer</td>
+                                    <td class="text-end">@i.Total.ToString("C")</td>
+                                    <td class="text-end text-muted">@i.Paid.ToString("C")</td>
+                                    <td class="text-end fw-semibold">@i.Balance.ToString("C")</td>
+                                    <td>@i.DueDate?.ToShortDateString()</td>
+                                    <td class="text-end">
+                                        <a asp-action="Pay" asp-route-id="@i.Id" class="btn btn-primary btn-sm">Pay</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</div>
