@@ -21,6 +21,7 @@ public class HomeController : Controller
             .Select(p => new PaymentRowVm(
                 p.Id,
                 p.InvoiceId,
+                p.Invoice.Customer.Name,
                 p.Amount,
                 p.PaidAt,
                 p.Method,

@@ -9,6 +9,7 @@ namespace Cobra.Api.Domain
 
         // FK → Invoice (your Invoice.CustomerId is Guid; keep this Guid too)
         public Guid InvoiceId { get; set; }
+        public Invoice Invoice { get; set; } = default!;
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal Amount { get; set; }

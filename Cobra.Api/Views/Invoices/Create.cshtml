@@ -1,0 +1,45 @@
+﻿@model InvoiceCreateVm
+@{
+    ViewData["Title"] = "New Invoice";
+}
+
+<div class="row">
+    <div class="col-12 col-lg-7 col-xl-6">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h1 class="h5 mb-3">New Invoice</h1>
+
+                <form asp-action="Create" method="post" class="row g-3">
+                    <div class="col-12">
+                        <label asp-for="CustomerId" class="form-label">Customer</label>
+                        <select asp-for="CustomerId" asp-items="Model.Customers" class="form-select">
+                            <option value="">-- Select customer --</option>
+                        </select>
+                        <span asp-validation-for="CustomerId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-6">
+                        <label asp-for="Total" class="form-label">Total</label>
+                        <input asp-for="Total" class="form-control" step="0.01" min="0.01" />
+                        <span asp-validation-for="Total" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-6">
+                        <label asp-for="DueDate" class="form-label">Due date</label>
+                        <input asp-for="DueDate" class="form-control" />
+                        <span asp-validation-for="DueDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                        <a asp-action="Index" class="btn btn-outline-secondary ms-2">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
