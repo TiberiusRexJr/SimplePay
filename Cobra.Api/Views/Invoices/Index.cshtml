@@ -1,0 +1,35 @@
+﻿@model IEnumerable<InvoiceRowVm>
+@{
+    ViewData["Title"] = "Invoices";
+}
+
+<div class="p-4 bg-white rounded shadow-sm">
+    <h1 class="h4 mb-3">Invoices</h1>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info mb-0">No invoices yet.</div>
+    }
+    else
+    {
+        <table class="table table-sm table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th class="text-end">Total</th>
+                    <th>Due</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <td>@i.Customer</td>
+                        <td class="text-end">@i.Total.ToString("C")</td>
+                        <td>@i.DueDate?.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
