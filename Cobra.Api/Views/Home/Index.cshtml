@@ -33,7 +33,8 @@
                             @foreach (var p in Model)
                             {
                                 <tr>
-                                    <td><code>@p.CustomerName</code></td>
+                                    <td>@p.CustomerName</td>
+                                    <td><code>@p.InvoiceId</code> </td>
                                     <td class="text-end">@p.Amount.ToString("C")</td>
                                     <td>@p.Method</td>
                                     <td>@p.PaidAt.ToLocalTime().ToString("g")</td>
